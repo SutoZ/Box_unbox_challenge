@@ -21,13 +21,11 @@ public class Branch {
 
     //required good logic! <-- we test if the customer was previously added or not!
     public boolean newCustomer(String customerName, double initialAmount) {
-        if (findcustomer(customerName) == null) {
+        if (findCustomer(customerName) == null) {
             this.customers.add(new Customer(customerName, initialAmount));
             return true;
-        }
-        else return false;
+        } else return false;
     }
-
 
 
     /*      findCustomer method is reguired to use!!!
@@ -42,12 +40,11 @@ public class Branch {
     }
 */
     public void addInitialTransaction(Customer customer, double transaction) {
-            for (int i = 0; i < customers.size(); i++) {
-                if (customers.get(i).equals(customer)) {
-                    customers.get(i).getTransactions().add(transaction);
-                    System.out.println("Transaction: " + transaction + " added.");
-                }
-            }
+        Customer cust = findCustomer(customer);
+        if (cust != null) {
+            //the method is in the Customer class, because it belongs to the customer. Changes are made in that method too.
+            cust.addTransaction(transaction);
+            System.out.println("Transaction: " + transaction + " added.");
+        }
     }
-
 }

@@ -27,6 +27,7 @@ public class Customer {
         this.initialAmount = initialAmount;
     }
 
+
     public void addTransaction (double amount) {
         this.transactions.add(amount);
     }
